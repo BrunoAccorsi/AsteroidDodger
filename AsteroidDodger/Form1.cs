@@ -39,10 +39,29 @@ namespace AsteroidDodger
 
         private void Form1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            if (e.KeyCode == Keys.Left) player.MoveX = -5;
-            if (e.KeyCode == Keys.Right) player.MoveX = 5;
-            if (e.KeyCode == Keys.Up) player.MoveY = -5;
-            if (e.KeyCode == Keys.Down) player.MoveY = 5;
+            switch (e.KeyCode)
+            {
+                case Keys.A:
+                case Keys.Left:
+                    player.MoveX = -5;
+                    break;
+                case Keys.D:
+                case Keys.Right:
+                    player.MoveX = 5;
+                    break;
+                case Keys.W:
+                case Keys.Up:
+                    player.MoveY = -5;
+                    break;
+                case Keys.S:
+                case Keys.Down:
+                    player.MoveY = 5;
+                    break;
+                default:
+                    player.MoveX = 0;
+                    player.MoveY = 0;
+                    break;
+            }
         }
 
         private void GameLoop_Tick(object sender, EventArgs e)
